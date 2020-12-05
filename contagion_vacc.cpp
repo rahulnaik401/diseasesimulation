@@ -5,7 +5,6 @@
 #include <vector>
 #include <numeric>
 #include <string>
-#include <fstream>
 #include <ctime>
 #include <cstdlib>
 #include "disease.h"
@@ -15,23 +14,25 @@ using std::cin;
 using std::cout;
 using std::string;
 using std::endl;
-using std::ofstream;
+
 
 
 int main() {
     srand(time(NULL));
-    ofstream outputFile;
-    outputFile.open("testoutputvacc.csv");
-    Population austin(10000, .9);
-    austin.random_infection();
-    austin.vaccination(100);
-    int days = 0;
-    while (austin.count_infected() != 0) {
-        outputFile << austin.count_infected() << " ";
-        austin.updatev1();
-        days++;
+    int trials=100;
+    vector<int> days(trials);
+    Population austin(10000, 1);
+    austin.vaccination((2000));
+    for (int i = 1; i <= trials; i++) {
+            austin.random_infection();
+            int day = 0;
+            while (austin.count_infected() != 0) {
+                austin.updatev1();
+                day++;
+            }
+            days.push_back(day);
+        }
+        float sum_days = accumulate(days.begin(), days.end(), 0.0f);
+        int avg_days = sum_days / trials;
+        cout << "Average days for disease to complete: " << avg_days << endl;
     }
-    outputFile << austin.count_infected() << endl;
-    outputFile << days << endl;
-    outputFile.close();
-}

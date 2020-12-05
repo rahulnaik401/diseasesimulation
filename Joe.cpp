@@ -2,10 +2,8 @@
 //COE 322 Fall 2020
 
 #include <iostream>
-#include <vector>
 #include <numeric>
 #include <string>
-#include <fstream>
 #include <ctime>
 #include <cstdlib>
 #include "disease.h"
@@ -15,24 +13,25 @@ using std::cin;
 using std::cout;
 using std::string;
 using std::endl;
-using std::ofstream;
 
 
 int main(){
+    srand(time(NULL));
     Person joe;
-    int day = 1;
-    for (;; day++) {
+    int day = 0;
+    while (joe.status_string()!="Recovered") {
         joe.update();
-        float sickchance = (float) rand() / (float) RAND_MAX;
-        if (sickchance > .50) {
+        float sickchance = float (rand())/float (RAND_MAX);
+        if (sickchance > .5) {
             joe.infect(5);
         }
-        cout << "On day " << day << ", Joe is " << joe.status_string() << endl;
+        cout << "On day " << day << " Joe is " << joe.status_string() << endl;
         if (joe.is_stable()) {
             break;
         }
         if (joe.is_stable()) {
             break;
         }
+        day++;
     }
 }

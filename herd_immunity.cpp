@@ -10,17 +10,16 @@ The following variables are kept constant:
  Number of Interactions: 6 (Means that each person in 'Austin' will have 6 random interactions with other people daily)
  Disease Duration: 5 days (Throughout this project the disease duration, the number of days someone will be sick, is kept at 5.
 The following variables are changed and meant to be studied:
- Percent Vaccinated: This is to see the effect on vaccincation rates on disease duration through the population and herd immunity.
+ Percent Vaccinated: This is to see the effect on vaccination rates on total disease duration through the population and herd immunity.
 Herd Immunity for this program is the number of people who are untouched by the disease shown as a percentage out of the total number who were never vaccinated.
 This is done to demonstrate the property of herd immunity to protect those in society from infection who are not even immunized.
-
+This program was used to conduct experiment three and four. 
 */
 
 #include <iostream>
 #include <vector>
 #include <numeric>
 #include <string>
-#include <fstream>
 #include <ctime>
 #include <cstdlib>
 #include "disease.h"
@@ -30,7 +29,7 @@ using std::cin;
 using std::cout;
 using std::string;
 using std::endl;
-using std::ofstream;
+
 
 
 
